@@ -6,9 +6,7 @@
     "build": "tsc"
   },
   "exports": {
-    "./business-types/user": {
-      "types": "./src/business-types/user.ts"
-    }
+    "./*": "./src/*.ts"
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
