@@ -1,3 +1,4 @@
+import { Button } from '@/components/ui/button';
 import { User } from '@repo/application-types/business-types/user';
 
 export default function Home() {
@@ -9,6 +10,7 @@ export default function Home() {
     return (
         <div>
             <h1>Hello {user.name}</h1>
+            <Button>Click me</Button>
         </div>
     );
 }
