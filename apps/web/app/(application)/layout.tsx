@@ -1,4 +1,4 @@
-import { SignedIn, UserButton } from '@clerk/nextjs';
+import { NavBar } from '@/components/nav-bar';
 
 export default function ApplicationLayout({
     children,
@@ -6,14 +6,9 @@ export default function ApplicationLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <div className="p-4">
-            {' '}
-            <header className="flex justify-end items-center p-4 gap-4 h-16">
-                <SignedIn>
-                    <UserButton />
-                </SignedIn>
-            </header>
-            {children}
+        <div>
+            <NavBar />
+            <div className="p-4">{children}</div>
         </div>
     );
 }
