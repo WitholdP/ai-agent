@@ -1,7 +1,7 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-    appId: 'pl.ai-agent.app',
+    appId: 'pl.aiagent.app',
     appName: 'AI-AGENT',
     webDir: 'out', // Next.js static export directory
     server: {

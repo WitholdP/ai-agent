@@ -17,8 +17,9 @@
         "build:mobile": "next build && npx cap sync"
     },
     "dependencies": {
+        "@capacitor/android": "^8.0.0",
         "@capacitor/core": "^8.0.0",
-        "@clerk/nextjs": "^6.36.5",
+        "@capacitor/ios": "^8.0.0",
         "@radix-ui/react-select": "^2.2.6",
         "@radix-ui/react-separator": "^1.1.8",
         "@radix-ui/react-slot": "^1.2.4",
