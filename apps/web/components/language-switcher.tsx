@@ -7,28 +7,19 @@ import {
     SelectTrigger,
     SelectValue,
 } from '@/components/ui/select';
-import { changeLocale } from 'i18n/changeLocale';
+import { DEFAULT_LOCALE, getLocale, locales, setLocale } from '@/i18n/locale';
 
-const locales = [
-    { code: 'en', label: 'EN' },
-    { code: 'pl', label: 'PL' },
-] as const;
-
-interface LanguageSwitcherProps {
-    currentLocale: string;
-}
-
-export const LanguageSwitcher = ({ currentLocale }: LanguageSwitcherProps) => {
-    const handleLocaleChange = async (locale: string) => {
-        if (locale === currentLocale) return;
-        await changeLocale(locale);
-    };
-
+export const LanguageSwitcher = () => {
+    const currentLocale = getLocale();
     const currentLabel =
-        locales.find((locale) => locale.code === currentLocale)?.label || 'EN';
+        locales.find((locale) => locale.code === currentLocale)?.label ||
+        DEFAULT_LOCALE;
 
     return (
-        <Select value={currentLocale} onValueChange={handleLocaleChange}>
+        <Select
+            value={currentLocale}
+            onValueChange={(value) => setLocale(value)}
+        >
             <SelectTrigger className="w-20">
                 <SelectValue>{currentLabel}</SelectValue>
             </SelectTrigger>

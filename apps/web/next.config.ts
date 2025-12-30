@@ -1,7 +1,11 @@
 import { NextConfig } from 'next';
-import createNextIntlPlugin from 'next-intl/plugin';
 
-const nextConfig: NextConfig = {};
+const nextConfig: NextConfig = {
+    output: 'export', // Enable static export for Capacitor
+    images: {
+        unoptimized: true, // Required for static export
+    },
+    trailingSlash: true, // Recommended for static export
+};
 
-const withNextIntl = createNextIntlPlugin('./i18n/requests.ts');
-export default withNextIntl(nextConfig);
+export default nextConfig;

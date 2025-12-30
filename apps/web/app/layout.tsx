@@ -1,6 +1,6 @@
+import { IntlProvider } from '@/i18n/IntlProvider';
 import { ClerkProvider } from '@clerk/nextjs';
 import type { Metadata } from 'next';
-import { NextIntlClientProvider } from 'next-intl';
 import localFont from 'next/font/local';
 
 import './globals.css';
@@ -28,15 +28,13 @@ export default function RootLayout({
         <ClerkProvider
             publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
         >
-            <NextIntlClientProvider>
-                <html lang="en">
-                    <body
-                        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-                    >
-                        {children}
-                    </body>
-                </html>
-            </NextIntlClientProvider>
+            <html lang="en">
+                <body
+                    className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+                >
+                    <IntlProvider>{children}</IntlProvider>
+                </body>
+            </html>
         </ClerkProvider>
     );
 }
