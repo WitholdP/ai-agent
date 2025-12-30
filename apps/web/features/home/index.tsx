@@ -1,4 +1,3 @@
-import { Button } from '@/components/ui/button';
 import { useTranslations } from 'next-intl';
 
 export const HomePage = () => {
@@ -7,7 +6,6 @@ export const HomePage = () => {
     return (
         <div>
             <p>{t('title')}</p>
-            <Button>Click me</Button>
         </div>
     );
 };

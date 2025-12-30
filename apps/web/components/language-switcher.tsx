@@ -1,8 +1,13 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from '@/components/ui/select';
 import { changeLocale } from 'i18n/changeLocale';
-import { useRouter } from 'next/navigation';
 
 const locales = [
     { code: 'en', label: 'EN' },
@@ -14,28 +19,26 @@ interface LanguageSwitcherProps {
 }
 
 export const LanguageSwitcher = ({ currentLocale }: LanguageSwitcherProps) => {
-    const router = useRouter();
-
     const handleLocaleChange = async (locale: string) => {
         if (locale === currentLocale) return;
         await changeLocale(locale);
-        router.refresh();
     };
 
+    const currentLabel =
+        locales.find((locale) => locale.code === currentLocale)?.label || 'EN';
+
     return (
-        <div className="flex gap-2">
-            {locales.map((locale) => (
-                <Button
-                    key={locale.code}
-                    variant={
-                        currentLocale === locale.code ? 'secondary' : 'outline'
-                    }
-                    size="sm"
-                    onClick={() => handleLocaleChange(locale.code)}
-                >
-                    {locale.label}
-                </Button>
-            ))}
-        </div>
+        <Select value={currentLocale} onValueChange={handleLocaleChange}>
+            <SelectTrigger className="w-20">
+                <SelectValue>{currentLabel}</SelectValue>
+            </SelectTrigger>
+            <SelectContent>
+                {locales.map((locale) => (
+                    <SelectItem key={locale.code} value={locale.code}>
+                        {locale.label}
+                    </SelectItem>
+                ))}
+            </SelectContent>
+        </Select>
     );
 };
